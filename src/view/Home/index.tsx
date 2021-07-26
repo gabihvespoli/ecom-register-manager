@@ -11,17 +11,80 @@ interface IProduct {
   price: number;
 }
 
+const server = [
+    {
+      id: 1,
+      photo: "https://source.unsplash.com/random",
+      name: "iPhone",
+      description: "Descrição do produto",
+      price: 5000
+    },
+    {
+      id: 2,
+      photo: "https://source.unsplash.com/random",
+      name: "Motorola",
+      description: "Descrição do produto",
+      price: 3000
+    },
+    {
+      id: 3,
+      photo: "https://source.unsplash.com/random",
+      name: "Galaxy",
+      description: "Descrição do produto",
+      price: 1000
+    },
+    {
+      id: 4,
+      photo: "https://source.unsplash.com/random",
+      name: "Azus",
+      description: "Descrição do produto",
+      price: 3666
+    },
+    {
+      id: 5,
+      photo: "https://source.unsplash.com/random",
+      name: "Notebook",
+      description: "Descrição do produto",
+      price: 8090
+    },
+    {
+      id: 6,
+      photo: "https://source.unsplash.com/random",
+      name: "TV Smart",
+      description: "Descrição do produto",
+      price: 3456
+    },
+    {
+      id: 7,
+      photo: "https://source.unsplash.com/random",
+      name: "Alexa",
+      description: "Descrição do produto",
+      price: 3467
+    },
+    {
+      id: 8,
+      photo: "https://source.unsplash.com/random",
+      name: "SmartWatch",
+      description: "Descrição do produto",
+      price: 1244
+    }
+  ]
+
 const Home: React.FC = () => {
   const [data, setData] = useState<IProduct[]>([]);
   const [cart, setCart] = useState<IProduct[]>([]);
 
   useEffect(() => {
-    api.get('').then(
-      response => {
-        setData(response.data)
-      }
-    )
-  }, []);
+    if(!data) {
+      api.get('').then(
+        response => {
+          setData(response.data)
+        }
+      )
+    } else {
+      setData(server)
+    }
+    }, []);
 
   const handleCart = (index: number) => {
     let push: any = [...cart, cart.push(data[index])]
