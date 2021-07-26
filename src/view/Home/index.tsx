@@ -84,6 +84,7 @@ const Home: React.FC = () => {
     } else {
       setData(server)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
   const handleCart = (index: number) => {
